@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+    <PreferenceCategory android:title="分组显示">
+        <CheckBoxPreference android:title="开启声音" android:key="open_sound" android:summary="当有新消息通知时播放声音提示" android:defaultValue="true" />
+        <SwitchPreference android:title="控制开关" />
+        <PreferenceScreen android:title="点击操作" android:key="xxx">
+        </PreferenceScreen>
+        <PreferenceScreen android:title="跳转页面">
+            <intent android:targetPackage="com.yy.preferencetheme" android:targetClass="com.yy.preferencetheme.SkinActivity" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="辅助功能">
+        <EditTextPreference android:key="number_edit"  android:title="输入电话号码"/>
+        <!--单选-->
+        <ListPreference
+            android:key="depart_value"
+            android:title="类别设置"
+            android:dialogTitle="选择类别"
+            android:entries="@array/cates"
+            android:entryValues="@array/cates_value">
+        </ListPreference>
+        <!--多选-->
+        <MultiSelectListPreference
+            android:key="abc"
+            android:entries="@array/days"
+            android:entryValues="@array/day_value"
+            android:title="重复"
+            android:summary="无"
+            />
+        <RingtonePreference
+            android:key="ring_key"
+            android:title="铃声选择"
+            android:ringtoneType="all"
+            android:showDefault="true"
+            android:showSilent="true">
+        </RingtonePreference>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:layout="@layout/prefs_category_widget"
+        android:title="第四个模块的标题" >
+        <!--通过layout及widgetlayout来指定布局-->
+        <CheckBoxPreference
+            android:layout="@layout/preference_item"
+            android:icon="@mipmap/ic_launcher"
+            android:key="parent_checkbox_preference"
+            android:summary="选定后子控件可操作"
+            android:title="父选择控件"
+            android:widgetLayout="@layout/checkbox_preference_widget" />
+
+        <!-- The visual style of a child is defined by this styled theme attribute. -->
+        <!-- 子控件关联父控件，如果父控件选中后子控件才可用 -->
+        <!--  android:layout="?android:attr/preferenceLayoutChild" -->
+        <CheckBoxPreference
+            android:dependency="parent_checkbox_preference"
+            android:icon="@mipmap/ic_launcher_round"
+            android:key="child_checkbox_preference"
+            android:layout="@layout/preference_item"
+            android:title="子控件（依托于父控件）"
+            android:widgetLayout="@layout/checkbox_preference_widget" />
+    </PreferenceCategory>
+</PreferenceScreen>

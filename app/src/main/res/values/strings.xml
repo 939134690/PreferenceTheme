@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PreferenceTheme</string>
+    <string name="pref_ringtone_silent">silent</string>
+</resources>
